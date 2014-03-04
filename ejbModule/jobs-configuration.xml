@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+
+	<batch:job id="pr01batch">
+		<batch:step id="step1">
+		 <batch:tasklet>
+		  <batch:chunk 
+		  reader="itemreader01"
+		   writer="itemwriter01" 
+		   commit-interval="2" ></batch:chunk>
+		 </batch:tasklet>
+		</batch:step>
+	</batch:job>
+	
+	<batch:job id="pr02batch">
+	   	<batch:step id="step2_1" next="step2_2">
+		 <batch:tasklet>
+		  <batch:chunk 
+		  reader="itemreader01"
+		   writer="itemwriter01" 
+		   commit-interval="2" ></batch:chunk>
+		 </batch:tasklet>
+		</batch:step>
+		<batch:step id="step2_2">
+		  <batch:tasklet ref="dormirTasklet" />
+		</batch:step>
+	</batch:job>
+	
+	<bean id="itemreader01" class="mx.gob.sat.batch.ItemReader01">
+	 <property name="maxIndex" value="50"></property>
+	</bean>
+	<bean id="itemwriter01" class="mx.gob.sat.batch.ItemWriter01"></bean>
+	<bean id="dormirTasklet" class="mx.gob.sat.batch.DormirTasklet"></bean>
+</beans>

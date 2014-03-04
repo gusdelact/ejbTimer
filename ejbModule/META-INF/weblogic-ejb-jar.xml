@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-ejb-jar xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-ejb-jar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd http://xmlns.oracle.com/weblogic/weblogic-ejb-jar http://xmlns.oracle.com/weblogic/weblogic-ejb-jar/1.2/weblogic-ejb-jar.xsd">
+    <!--weblogic-version:10.3.4-->
+    	<wls:weblogic-enterprise-bean>
+		<wls:ejb-name>SimpleTimer</wls:ejb-name>
+		<wls:stateless-session-descriptor>
+			<wls:stateless-clustering>
+				<wls:home-is-clusterable>true</wls:home-is-clusterable>
+				<wls:home-load-algorithm>round-robin</wls:home-load-algorithm>
+				<wls:stateless-bean-is-clusterable>true</wls:stateless-bean-is-clusterable>
+				<wls:stateless-bean-load-algorithm>round-robin</wls:stateless-bean-load-algorithm>
+			</wls:stateless-clustering>
+		</wls:stateless-session-descriptor>
+		<wls:enable-call-by-reference>false</wls:enable-call-by-reference>
+		<wls:jndi-name>mx.gob.sat.ejb.TimerEjbjndi</wls:jndi-name>
+	</wls:weblogic-enterprise-bean>
+    <wls:weblogic-enterprise-bean>
+        <wls:ejb-name>ScheduleExpressionTimer</wls:ejb-name>
+        <wls:stateless-session-descriptor>
+            <wls:stateless-clustering>
+                <wls:home-is-clusterable>true</wls:home-is-clusterable>
+                <wls:home-load-algorithm>round-robin</wls:home-load-algorithm>
+                <wls:stateless-bean-is-clusterable>true</wls:stateless-bean-is-clusterable>
+                <wls:stateless-bean-load-algorithm>round-robin</wls:stateless-bean-load-algorithm>
+            </wls:stateless-clustering>
+        </wls:stateless-session-descriptor>
+        <wls:enable-call-by-reference>false</wls:enable-call-by-reference>
+        <wls:local-jndi-name>mx.gob.sat.ejb.ScheduleExpressionTimer</wls:local-jndi-name>
+    </wls:weblogic-enterprise-bean>
+	<wls:timer-implementation>Clustered</wls:timer-implementation>
+</wls:weblogic-ejb-jar>

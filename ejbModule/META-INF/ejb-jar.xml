@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:ejb="http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd" version="3.0">
+  <display-name>ejbTimer</display-name>
+  <enterprise-beans>
+    <session>
+      <ejb-name>SimpleTimer</ejb-name>
+      <home>mx.gob.sat.ejb.TimerHome</home>
+      <remote>mx.gob.sat.ejb.TimerRemote</remote>
+      <ejb-class>mx.gob.sat.ejb.MyTimer</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Container</transaction-type>
+    </session>
+    <session>
+      <ejb-name>ScheduleExpressionTimer</ejb-name>
+      <local-home>mx.gob.sat.ejb.ScheduleExpressionTimerLocalHome</local-home>
+      <local>mx.gob.sat.ejb.ScheduleExpressionTimerLocal</local>
+      <ejb-class>mx.gob.sat.ejb.ScheduleExpressionTimer</ejb-class>
+      <session-type>Stateless</session-type>
+      <transaction-type>Bean</transaction-type>
+    </session>
+  </enterprise-beans>
+</ejb-jar>
